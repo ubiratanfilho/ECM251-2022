@@ -1,19 +1,34 @@
-public class Caneta {
-    // Atributos da classe
+public class Caneta{
     String modelo;
     String cor;
     double ponta;
     int carga;
+    final int CARGA_MAXIMA = 100;
 
-    // Métodos da classe
-    void status() {
-        System.out.println("Modelo: " + this.modelo);
-        System.out.println("Cor: " + this.cor);
-        System.out.println("Ponta: " + this.ponta);
-        System.out.println("Carga: " + this.carga);
+    void escrever(String texto){
+        for (int i = 0; i < texto.length(); i++) {
+            if (carga > 0) {
+                System.out.print(texto.charAt(i));
+                carga--;
+            } else {
+                System.out.println("\nCaneta sem carga!");
+                break;
+            }
+        }
     }
-    
-    void escrever(String texto) {
-        System.out.println(texto);
+
+    void iniciarCaneta(String modelo, String cor, double ponta){
+        this.modelo = modelo;
+        this.cor = cor;
+        this.ponta = ponta;
+        this.carga = CARGA_MAXIMA;
+    }
+
+    String pegarDados(){
+        return "Modelo:" + modelo +
+        "- Cor:" + cor +
+        "- Ponta:" + ponta +
+        "- Carga:" + carga;
     }
 }
+
