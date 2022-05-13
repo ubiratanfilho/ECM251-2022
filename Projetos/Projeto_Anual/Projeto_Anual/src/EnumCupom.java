@@ -1,0 +1,3 @@
+public enum EnumCupom {
+    DESCONTO, CASHBACK, PONTOS_PROMOCIONAIS, BRINDE;
+}
