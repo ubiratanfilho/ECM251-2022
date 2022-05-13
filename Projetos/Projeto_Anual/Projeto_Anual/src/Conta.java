@@ -17,13 +17,13 @@ public class Conta {
     private Transacao[] transacoes={}; // transacoes que a conta realizou
     private Jogo[] wishlist={}; // wishlist da conta
     private Jogo[] carrinho={}; // carrinho da conta
-    private String[] MetodoPagamento={}; // Metodos de pagamento que a conta utiliza
+    private EnumMetodoPagamento[] MetodoPagamento={}; // Metodos de pagamento que a conta utiliza
     private Double saldo=0.0; // saldo da conta
 
     // informações de jogos
     private Perfil[] perfis={}; // Perfis dentro da conta
     private Jogo[] jogos={}; // jogos que a conta possui
-    private String[] plataformas={}; // plataformas que a conta utiliza
+    private EnumPlataforma[] plataformas={}; // plataformas que a conta utiliza
     private Feedback[] feedbacks={}; // feedbacks que a conta escreveu
 
     // Construtor
@@ -134,7 +134,7 @@ public class Conta {
         return carrinho;
     }
 
-    public String[] getMetodoPagamento() {
+    public EnumMetodoPagamento[] getMetodoPagamento() {
         return MetodoPagamento;
     }
 
@@ -153,7 +153,7 @@ public class Conta {
         return jogos;
     }
 
-    public String[] getPlataformas() {
+    public EnumPlataforma[] getPlataformas() {
         return plataformas;
     }
 
@@ -193,8 +193,8 @@ public class Conta {
         aux[aux.length - 1] = jogo;
         carrinho = aux;
     }
-    public void addMetodoPagamento(String metodoPagamento) {
-        String[] aux = new String[MetodoPagamento.length + 1];
+    public void addMetodoPagamento(EnumMetodoPagamento metodoPagamento) {
+        EnumMetodoPagamento[] aux = new EnumMetodoPagamento[MetodoPagamento.length + 1];
         for (int i = 0; i < MetodoPagamento.length; i++) {
             aux[i] = MetodoPagamento[i];
         }
@@ -217,8 +217,8 @@ public class Conta {
         aux[aux.length - 1] = jogo;
         jogos = aux;
     }
-    public void addPlataforma(String plataforma) {
-        String[] aux = new String[plataformas.length + 1];
+    public void addPlataforma(EnumPlataforma plataforma) {
+        EnumPlataforma[] aux = new EnumPlataforma[plataformas.length + 1];
         for (int i = 0; i < plataformas.length; i++) {
             aux[i] = plataformas[i];
         }
