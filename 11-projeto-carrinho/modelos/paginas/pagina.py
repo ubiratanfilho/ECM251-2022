@@ -4,7 +4,7 @@ class Pagina():
     def _construir_base(self):
         janela = ttk.Window(
             title="Página",
-            size=(1440, 1024),
+            size=(1366, 768),
         )
         return janela
     
