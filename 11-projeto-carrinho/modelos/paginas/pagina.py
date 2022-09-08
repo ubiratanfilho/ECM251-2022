@@ -1,6 +1,4 @@
-from tkinter import PhotoImage
 import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
 
 class Pagina():
     def _construir_base(self):
