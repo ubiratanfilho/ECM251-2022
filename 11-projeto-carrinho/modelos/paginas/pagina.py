@@ -1,19 +1,20 @@
 import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
+from tkinter import PhotoImage
 
-class Pagina():
-    def _construir_base(self):
-        janela = ttk.Window(
-            title="Página",
-            size=(1366, 768),
-        )
-        return janela
-    
-    def __init__(self) -> None:
-        self.base = self._construir_base()
+class Pagina(ttk.Frame):
+    def __init__(self, master, **kwargs):
+        super().__init__(master, padding=10)
+        self.pack(fill=BOTH, expand=YES)
         
-    def run(self):
-        self.base.mainloop()
+class Janela(ttk.Window):
+    def __init__(self, title="Página", **kwargs):
+        super().__init__(title=title,
+                        size=(1366, 768),
+                        **kwargs)
+        self.iconphoto(False, PhotoImage(file="../../imagens/Utec.png"))
         
 if __name__ == "__main__":
-    app = Pagina()
-    app.run()
+    janela = Janela(title="Página Inicial")
+    Pagina(janela)
+    janela.mainloop()

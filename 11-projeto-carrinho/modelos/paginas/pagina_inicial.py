@@ -1,3 +1,4 @@
+from tkinter import PhotoImage
 import ttkbootstrap as ttk
 from pagina import Pagina
 
@@ -7,6 +8,8 @@ class PaginaInicial(Pagina):
             title="Página Inicial",
             size=(1366, 768),
         )
+        janela.iconphoto(False, PhotoImage(file="../../imagens/Utec.png"))
+
         
         # Adicionando frames
         ttk.Frame(
@@ -20,7 +23,12 @@ class PaginaInicial(Pagina):
             janela,
             bootstyle="secondary",
             width=1366,
-            height=300,
+            height=350,
+        ).pack()
+        
+        # Adicionando entrada
+        ttk.Entry(
+            janela,
         ).pack()
         
         return janela
