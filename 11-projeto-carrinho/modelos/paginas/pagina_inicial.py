@@ -7,8 +7,7 @@ class PaginaInicial(Pagina):
         super().__init__(master, **kwargs)
         self._criar_layout()
         
-        
-    def _criar_layout(self):
+    def _criar_barra_superior(self):
         # barra superior
         barra_superior = ttk.Frame(self, width=1366, height=150, bootstyle="dark")
         barra_superior.pack(fill=X)
@@ -19,10 +18,16 @@ class PaginaInicial(Pagina):
         carrinho_botao.pack(side=RIGHT, padx=30, pady=10)
         busca = ttk.Entry(barra_superior, width=150)
         busca.pack(side=RIGHT, padx=10, pady=10)
-        
-        produtos_destaque = ttk.Frame(self, width=1366, height=300, bootstyle="secondary")
-        produtos_destaque.pack()
-        
+    
+    def _criar_produtos_destaque(self):
+        # produtos em destaque
+        produtos_destaque = ttk.Frame(self, width=1366, height=400, bootstyle="secondary")
+        produtos_destaque.pack(fill=X)
+    
+    def _criar_layout(self):
+        self._criar_barra_superior()
+        self._criar_produtos_destaque()
+
 if __name__ == "__main__":
     janela = Janela(title="Página Inicial")
     PaginaInicial(janela)
