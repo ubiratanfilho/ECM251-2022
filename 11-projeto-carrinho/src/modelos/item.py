@@ -1,9 +1,10 @@
 class Item():
     # Construtor
-    def __init__(self, preco, nome, descricao=None):
+    def __init__(self, preco, nome, descricao=None,imagem=None):
         self._preco = preco # _ indica que é privado
         self._nome = nome
         self._descricao = descricao
+        self._imagem = imagem
     
     # Getters
     def get_nome(self):
@@ -12,6 +13,8 @@ class Item():
         return self._preco
     def get_descricao(self):
         return self._descricao
+    def get_imagem(self):
+        return self._imagem
     
     # To String
     def __str__(self):

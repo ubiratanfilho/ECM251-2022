@@ -7,4 +7,7 @@ with col1:
 with col2:
     st.image("imagens/Utec.png", width=200)
     
-st.markdown("## Produtos")  
+st.markdown("## Produtos") 
+
+col1, col2, col3 = st.columns(3)
+ 
