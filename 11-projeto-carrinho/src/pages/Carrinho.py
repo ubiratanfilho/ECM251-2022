@@ -1,3 +1,3 @@
 import streamlit as st
 
-st.title("UbiraTec")
+st.title("Carrinho")
