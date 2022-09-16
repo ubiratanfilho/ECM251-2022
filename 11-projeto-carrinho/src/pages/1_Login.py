@@ -15,10 +15,10 @@ if st.session_state.usuario == None:
                 usuario_correto = u
                 break
         if usuario_correto == None:
-            st.text("Usuário ou senha incorretos ❌")
+            st.error("Usuário ou senha incorretos ❌")
             st.session_state.usuario = None
         else:
-            st.text("Login realizado com sucesso ✔️")
+            st.success("Login realizado com sucesso ✔️")
             st.session_state.usuario = usuario_correto
 else:
     st.write(f"Você está logado como **{st.session_state.usuario.get_user_name()}**")
