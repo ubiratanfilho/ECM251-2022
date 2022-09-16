@@ -1,4 +1,3 @@
-from modules.usuarios.perfil import Perfil
 
 
 class Usuario():
@@ -9,8 +8,6 @@ class Usuario():
         
     def get_user_name(self) -> str:
         return self._user_name
-    def get_perfil(self) -> Perfil:
-        return self._perfil
     
     def check_password(self, password) -> bool:
         return self._password == password
