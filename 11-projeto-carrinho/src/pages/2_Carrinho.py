@@ -13,5 +13,6 @@ def exibe_produto(produto):
 
 st.title("Carrinho de Compras")
 
+# exibe os produtos
 for item in st.session_state.carrinho:
     exibe_produto(item)

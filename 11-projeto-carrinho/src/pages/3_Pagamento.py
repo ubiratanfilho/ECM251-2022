@@ -16,9 +16,11 @@ st.title("Pagamento")
 if st.session_state.usuario != None:
     st.markdown(f"### Usuário: {st.session_state.usuario.get_user_name()}")
     st.markdown(f"## Carrinho:")
+    # exibe os produtos
     for item in st.session_state.carrinho:
         exibe_produto(item)
     
+    # calcula o valor total do carrinho
     valor_total = sum([item.get_preco() for item in st.session_state.carrinho])
     st.markdown(f"### Valor total: R${valor_total:.2f}")
     

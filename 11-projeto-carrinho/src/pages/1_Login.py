@@ -3,7 +3,6 @@ from modules.usuarios.usuario import Usuario
 
 st.title("Login")
 
-# Entrada de dados
 if st.session_state.usuario == None:
     usuario = st.text_input("Usuário")
     senha = st.text_input("Senha", type="password")
@@ -22,4 +21,3 @@ if st.session_state.usuario == None:
             st.session_state.usuario = usuario_correto
 else:
     st.write(f"Você está logado como **{st.session_state.usuario.get_user_name()}**")
-    
