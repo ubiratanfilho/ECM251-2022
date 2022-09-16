@@ -1,6 +1,5 @@
 import streamlit as st
 from modules.item import Item
-from PIL import Image
 
 # Inicializando session states
 if "usuario" not in st.session_state:
@@ -24,10 +23,9 @@ with col2:
     
 st.markdown("## Produtos") 
 
-col1, col2, col3 = st.columns(3)
-
 # Exibe os produtos
 def exibe_produto(produto):
+    from PIL import Image
     img = Image.open(produto.get_imagem())
     st.image(img, width=200)
     st.markdown(f"### {produto.get_nome()}")

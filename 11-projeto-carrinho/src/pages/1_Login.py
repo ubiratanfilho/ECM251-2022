@@ -21,6 +21,7 @@ if enter:
             break
     if usuario_correto == None:
         st.text("Usuário ou senha incorretos ❌")
+        st.session_state.usuario = None
     else:
         st.text("Login realizado com sucesso ✔️")
         st.session_state.usuario = usuario_correto
