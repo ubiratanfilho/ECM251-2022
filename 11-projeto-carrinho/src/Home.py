@@ -2,6 +2,7 @@ import streamlit as st
 from modelos.item import Item
 from PIL import Image
 
+# Exibe o título da página inicial
 col1, col2 = st.columns(2)
 with col1:
     st.title("UbiraTec")
@@ -17,8 +18,7 @@ p1 = Item(354.99, "UbiraTec Washer", "Lavadora de tênis e sapatos", "imagens/wa
 p2 = Item(9999.99, "Samsung Neo G9", "Monitor Gamer Samsung Curvado", "imagens/neog9.jfif")
 p3 = Item(449.99, "Nike PG4 Gatorade", "Tênis de Basquete do Paul George","imagens/pg4.png")
 
-
-
+# Exibe os produtos
 img1 = Image.open(p1.get_imagem())
 st.image(img1)
 st.markdown(f"### {p1.get_nome()}")
