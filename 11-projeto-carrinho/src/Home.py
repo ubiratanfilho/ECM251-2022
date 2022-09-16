@@ -1,9 +1,17 @@
 import streamlit as st
 from modules.item import Item
+from modules.usuarios.usuario import Usuario
+
 
 # Inicializando session states
 if "usuario" not in st.session_state:
     st.session_state.usuario = None
+if "all_users" not in st.session_state:
+    # Usuários no banco de dados
+    u1 = Usuario("bira", "123", "bira@gmail.com")
+    u2 = Usuario("jordan", "123", "jordan@gmail.com")
+    u3 = Usuario("lebron", "123", "lebron@gmail.com")
+    st.session_state.all_users = [u1, u2, u3]
 if "carrinho" not in st.session_state:
     st.session_state.carrinho = []
 if "estoque" not in st.session_state:
@@ -31,8 +39,9 @@ def exibe_produto(produto):
     st.markdown(f"### {produto.get_nome()}")
     st.markdown(f"{produto.get_descricao()}")
     st.markdown(f"#### R${produto.get_preco()}")
-    st.button("Comprar 🛒", key=produto.get_nome())
+    button = st.button("Comprar 🛒", key=produto.get_nome())
+    if button:
+        st.session_state.carrinho.append(produto)
 
-exibe_produto(st.session_state.estoque[0])
-exibe_produto(st.session_state.estoque[1])
-exibe_produto(st.session_state.estoque[2])
+for produto in st.session_state.estoque:
+    exibe_produto(produto)
