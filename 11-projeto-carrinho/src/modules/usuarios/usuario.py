@@ -1,4 +1,4 @@
-from modelos.usuarios.perfil import Perfil
+from modules.usuarios.perfil import Perfil
 
 
 class Usuario():

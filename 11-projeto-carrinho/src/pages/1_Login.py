@@ -1,5 +1,5 @@
 import streamlit as st
-from modelos.usuarios.usuario import Usuario
+from modules.usuarios.usuario import Usuario
 
 st.title("Login")
 
@@ -9,18 +9,19 @@ u2 = Usuario("jordan", "123", "jordan@gmail.com")
 u3 = Usuario("lebron", "123", "lebron@gmail.com")
 l_usuarios = [u1, u2, u3]
 
-usuario = None
 # Entrada de dados
 usuario = st.text_input("Usuário")
 senha = st.text_input("Senha", type="password")
 enter = st.button("Entrar")
-usuario_correto = False
+usuario_correto = None
 if enter:
     for u in l_usuarios:
         if usuario == u.get_user_name() and u.check_password(senha):
-            usuario_correto = True
+            usuario_correto = u
             break
-    if not usuario_correto:
+    if usuario_correto == None:
         st.text("Usuário ou senha incorretos ❌")
     else:
         st.text("Login realizado com sucesso ✔️")
+        st.session_state.usuario = usuario_correto
+    

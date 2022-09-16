@@ -1,6 +1,10 @@
 import streamlit as st
-from modelos.item import Item
+from modules.item import Item
 from PIL import Image
+
+# Inicializando session states
+if "usuario" not in st.session_state:
+    st.session_state.usuario = None
 
 # Exibe o título da página inicial
 col1, col2 = st.columns(2)
@@ -19,23 +23,14 @@ p2 = Item(9999.99, "Samsung Neo G9", "Monitor Gamer Samsung Curvado", "imagens/n
 p3 = Item(449.99, "Nike PG4 Gatorade", "Tênis de Basquete do Paul George","imagens/pg4.png")
 
 # Exibe os produtos
-img1 = Image.open(p1.get_imagem())
-st.image(img1)
-st.markdown(f"### {p1.get_nome()}")
-st.markdown(f"{p1.get_descricao()}")
-st.markdown(f"#### R${p1.get_preco()}")
-st.button("Comprar Washer")
+def exibe_produto(produto):
+    img = Image.open(produto.get_imagem())
+    st.image(img, width=200)
+    st.markdown(f"### {produto.get_nome()}")
+    st.markdown(f"{produto.get_descricao()}")
+    st.markdown(f"#### R${produto.get_preco()}")
+    st.button("Comprar 🛒", key=produto.get_nome())
 
-img2 = Image.open(p2.get_imagem())
-st.image(img2, width=200)
-st.markdown(f"### {p2.get_nome()}")
-st.markdown(f"{p2.get_descricao()}")
-st.markdown(f"#### R${p2.get_preco()}")
-st.button("Comprar Neo G9")
-
-img3 = Image.open(p3.get_imagem())
-st.image(img3, width=200)
-st.markdown(f"### {p3.get_nome()}")
-st.markdown(f"{p3.get_descricao()}")
-st.markdown(f"#### R${p3.get_preco()}")
-st.button("Comprar PG4")
+exibe_produto(p1)
+exibe_produto(p2)
+exibe_produto(p3)
