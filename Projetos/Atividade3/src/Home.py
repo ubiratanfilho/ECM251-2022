@@ -4,17 +4,9 @@
 import streamlit as st
 from models.item import Item
 from models.usuario import Usuario
+from controllers.usuario_controller import UsuarioController
 
-
-# Inicializando session states
-if "usuario" not in st.session_state:
-    st.session_state.usuario = None
-if "all_users" not in st.session_state:
-    # Usuários no banco de dados
-    u1 = Usuario("bira", "123", "bira@gmail.com")
-    u2 = Usuario("jordan", "123", "jordan@gmail.com")
-    u3 = Usuario("lebron", "123", "lebron@gmail.com")
-    st.session_state.all_users = [u1, u2, u3]
+usuario_controller = UsuarioController()
 if "carrinho" not in st.session_state:
     st.session_state.carrinho = []
 if "estoque" not in st.session_state:
