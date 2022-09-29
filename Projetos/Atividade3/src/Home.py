@@ -17,7 +17,7 @@ with col1:
     st.title("UbiraTec")
     st.markdown("### A única loja do seu ❤️💻")
 with col2:
-    st.image("./imagens/Utec.png", width=200)
+    st.image("./src/imagens/Utec.png", width=200)
 
 if st.session_state.usuario != None:
     st.markdown("## Produtos") 
