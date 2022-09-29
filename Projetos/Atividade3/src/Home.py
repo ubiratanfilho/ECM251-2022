@@ -2,8 +2,8 @@
 # R.A - 20.00928-3
 
 import streamlit as st
-from modules.item import Item
-from modules.usuarios.usuario import Usuario
+from models.item import Item
+from models.usuario import Usuario
 
 
 # Inicializando session states
