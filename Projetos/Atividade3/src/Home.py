@@ -5,16 +5,10 @@ import streamlit as st
 from models.item import Item
 from models.usuario import Usuario
 from controllers.usuario_controller import UsuarioController
+from controllers.item_controller import ItemController
 
 usuario_controller = UsuarioController()
-if "carrinho" not in st.session_state:
-    st.session_state.carrinho = []
-if "estoque" not in st.session_state:
-    # Produtos no banco de dados
-    p1 = Item(354.99, "UbiraTec Washer", "Lavadora de tênis e sapatos", "./imagens/washer.png")
-    p2 = Item(9999.99, "Samsung Neo G9", "Monitor Gamer Samsung Curvado", "./imagens/neog9.jfif")
-    p3 = Item(449.99, "Nike PG4 Gatorade", "Tênis de Basquete do Paul George","./imagens/pg4.png")
-    st.session_state.estoque = [p1, p2, p3]
+item_controller = ItemController()
 
 ### Página Inicial
 # Exibe o título da página inicial
