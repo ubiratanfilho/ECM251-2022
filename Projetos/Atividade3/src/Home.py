@@ -17,7 +17,11 @@ with col1:
     st.title("UbiraTec")
     st.markdown("### A única loja do seu ❤️💻")
 with col2:
-    st.image("./src/imagens/Utec.png", width=200)
+    # caso o arquivo seja rodado dentro de src ou fora de src
+    try:
+        st.image("./src/imagens/Utec.png", width=200)
+    except FileNotFoundError:
+        st.image("./imagens/Utec.png", width=200)
 
 if st.session_state.usuario != None:
     st.markdown("## Produtos") 
@@ -25,7 +29,10 @@ if st.session_state.usuario != None:
     # Exibe os produtos
     def exibe_produto(produto):
         from PIL import Image
-        img = Image.open(produto.get_imagem())
+        try:
+            img = Image.open(produto.get_imagem())
+        except FileNotFoundError:
+            img = Image.open("./src/" + produto.get_imagem()[2:])
         st.image(img, width=200)
         st.markdown(f"### {produto.get_nome()}")
         st.markdown(f"{produto.get_descricao()}")
