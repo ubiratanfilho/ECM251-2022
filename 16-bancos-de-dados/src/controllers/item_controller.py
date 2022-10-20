@@ -18,3 +18,6 @@ class ItemController:
     def pegar_todos_itens(self) -> list[Item]:
         itens = ItemDao.get_instance().get_all()
         return itens
+
+    def atualizar_item(self, item) -> bool:
+        return ItemDao.get_instance().atualizar_item(item)
