@@ -12,7 +12,7 @@ class ItemDAO:
         return cls._instance
     
     def _connect(self):
-        self.conn = sqlite3.connect('../databases/sqlite.db')
+        self.conn = sqlite3.connect('./databases/sqlite.db')
         
     def get_all(self):
         self.cursor = self.conn.cursor()
@@ -24,3 +24,12 @@ class ItemDAO:
             resultados.append(Item(resultado[1], resultado[2], resultado[3], resultado[4]))
         self.cursor.close()
         return resultados
+    
+    def inserir_item(self, item):
+        self.cursor = self.conn.cursor()
+        self.cursor.execute("""
+            INSERT INTO Produtos (id, preco, nome, descricao, imagem)
+            VALUES(?,?,?);
+        """, (item.get_id(), item.get_preco(), item.get_nome(), item.get_descricao(), item.get_imagem()))
+        self.conn.commit()
+        self.cursor.close()
