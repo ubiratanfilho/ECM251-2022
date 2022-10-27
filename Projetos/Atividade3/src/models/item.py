@@ -1,12 +1,17 @@
+import uuid
+
 class Item():
     # Construtor
     def __init__(self, preco, nome, descricao=None,imagem=None):
+        self._id = uuid.uuid4()
         self._preco = preco # _ indica que é privado
         self._nome = nome
         self._descricao = descricao
         self._imagem = imagem
     
     # Getters
+    def get_id(self):
+        return self._id
     def get_nome(self):
         return self._nome
     def get_preco(self):
