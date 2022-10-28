@@ -1,5 +1,3 @@
-import uuid
-
 class Item():
     # Construtor
     def __init__(self, nome, preco, descricao=None,imagem=None):
