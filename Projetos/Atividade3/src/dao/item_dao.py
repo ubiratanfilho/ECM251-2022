@@ -78,5 +78,9 @@ class ItemDAO:
         self.cursor.execute("""
             DELETE FROM Produtos;
         """)
+        self.cursor.execute("""
+            DELETE FROM sqlite_sequence WHERE name = 'Produtos';
+        """)
         self.conn.commit()
         self.cursor.close()
+    
