@@ -23,9 +23,12 @@ class Item():
     
     # To String
     def __str__(self):
-        return f"{self._nome} - {self._preco} - {self._descricao}"
+        return f"{self._id} - {self._nome} - {self._preco} - {self._descricao}"
     
     def __eq__(self, __o: object):
         if isinstance(__o, Item):
             return self._nome == __o.get_nome()
         return False
+    
+item = Item(20.99, "Ubiratec Start", "Primeiro Produto Ubiratec", "https")
+print(item)

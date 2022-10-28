@@ -2,6 +2,8 @@ import sqlite3
 from models.item import Item
 
 class ItemDAO:
+    _instance = None
+    
     def __init__(self) -> None:
         self._connect()
         
@@ -29,7 +31,7 @@ class ItemDAO:
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
             INSERT INTO Produtos (id, preco, nome, descricao, imagem)
-            VALUES(?,?,?);
+            VALUES(?,?,?,?,?);
         """, (item.get_id(), item.get_preco(), item.get_nome(), item.get_descricao(), item.get_imagem()))
         self.conn.commit()
         self.cursor.close()
