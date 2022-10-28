@@ -60,7 +60,7 @@ class ItemDAO:
             return False
         return True
     
-    def get_item_by_id(self, id):
+    def pegar_item(self, id):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
             SELECT * FROM Produtos WHERE id = ?;
