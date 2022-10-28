@@ -20,7 +20,7 @@ class Item():
     
     # To String
     def __str__(self):
-        return f"{self._id} - {self._nome} - {self._preco} - {self._descricao}"
+        return f"{self._nome} - {self._descricao} - {self._preco} - {self._imagem}"
     
     def __eq__(self, __o: object):
         if isinstance(__o, Item):
