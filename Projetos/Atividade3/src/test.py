@@ -15,4 +15,24 @@ u1 = Usuario("ubiratan", "ubiratan@gmail.com", "123456")
 u2 = Usuario("joao", "joao@gmail.com", "123456")
 u3 = Usuario("maria", "maria@gmail.com", "123456")
 
+# Inserção de usuários
+controller = UsuarioController()
+controller.limpar_tabela()
+controller.inserir_usuario(u1) 
+controller.inserir_usuario(u2)
+controller.inserir_usuario(u3)
 
+# Exibição de usuários
+for usuario in controller.get_all():
+    print(usuario)
+print()
+    
+# Delete de usuário
+controller.deletar_usuario(u1)
+
+# Exibição de usuários
+for usuario in controller.get_all():
+    print(usuario)
+    
+# Limpando tabela
+controller.limpar_tabela()
