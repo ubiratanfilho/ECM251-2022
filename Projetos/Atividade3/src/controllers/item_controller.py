@@ -9,8 +9,7 @@ class ItemController:
     
     def get_all(self):
         try:
-            ItemDAO.get_instance().get_all()
-            return True
+            return ItemDAO.get_instance().get_all()
         except:
             return False
     

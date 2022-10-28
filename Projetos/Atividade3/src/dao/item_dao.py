@@ -26,7 +26,8 @@ class ItemDAO:
             resultados.append(Item(nome=resultado[1], 
                                    descricao=resultado[2], 
                                    preco=resultado[3], 
-                                   imagem=resultado[4]))
+                                   imagem=resultado[4],
+                                   id=resultado[0]))
         self.cursor.close()
         return resultados
     
