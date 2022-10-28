@@ -4,18 +4,46 @@ from models.item import Item
 from dao.item_dao import ItemDAO
 
 class ItemController:
-    # def __init__(self):
-    #     if "carrinho" not in st.session_state:
-    #         st.session_state.carrinho = []
-    #     if "estoque" not in st.session_state:
-    #         # Produtos no banco de dados
-    #         p1 = Item(354.99, "UbiraTec Washer", "Lavadora de tênis e sapatos", "./imagens/washer.png")
-    #         p2 = Item(9999.99, "Samsung Neo G9", "Monitor Gamer Samsung Curvado", "./imagens/neog9.jfif")
-    #         p3 = Item(449.99, "Nike PG4 Gatorade", "Tênis de Basquete do Paul George","./imagens/pg4.png")
-    #         st.session_state.estoque = [p1, p2, p3]
-    def __init__(self) -> None:
+    def __init__(self):
         pass
     
-    def pegar_item(self, id) -> Item:
-        item = ItemDAO.get_instance().pegar_item(id)
-        return item
+    def get_all(self):
+        try:
+            ItemDAO.get_instance().get_all()
+            return True
+        except:
+            return False
+    
+    def inserir_item(self, item):
+        try:
+            ItemDAO.get_instance().inserir_item(item)
+            return True
+        except:
+            return False
+        
+    def deletar_item(self, item):
+        try:
+            ItemDAO.get_instance().deletar_item(item)
+            return True
+        except:
+            return False
+    
+    def atualizar_item(self, item):
+        try:
+            ItemDAO.get_instance().atualizar_item(item)
+            return True
+        except:
+            return False
+    
+    def pegar_item(self, id):
+        try:
+            return ItemDAO.get_instance().pegar_item(id)
+        except:
+            return False
+        
+    def limpar_tabela(self):
+        try:
+            ItemDAO.get_instance().limpar_tabela()
+            return True
+        except:
+            return False
