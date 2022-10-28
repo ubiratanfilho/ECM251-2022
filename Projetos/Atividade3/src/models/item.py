@@ -2,16 +2,13 @@ import uuid
 
 class Item():
     # Construtor
-    def __init__(self, preco, nome, descricao=None,imagem=None):
-        self._id = uuid.uuid4()
-        self._preco = preco # _ indica que é privado
+    def __init__(self, nome, preco, descricao=None,imagem=None):
         self._nome = nome
         self._descricao = descricao
+        self._preco = preco # _ indica que é privado
         self._imagem = imagem
     
     # Getters
-    def get_id(self):
-        return self._id
     def get_nome(self):
         return self._nome
     def get_descricao(self):
@@ -29,6 +26,3 @@ class Item():
         if isinstance(__o, Item):
             return self._nome == __o.get_nome()
         return False
-    
-item = Item(20.99, "Ubiratec Start", "Primeiro Produto Ubiratec", "https")
-print(item)

@@ -23,15 +23,18 @@ class ItemDAO:
         """)
         resultados = []
         for resultado in self.cursor.fetchall():
-            resultados.append(Item(resultado[1], resultado[2], resultado[3], resultado[4]))
+            resultados.append(Item(nome=resultado[1], 
+                                   descricao=resultado[2], 
+                                   preco=resultado[3], 
+                                   imagem=resultado[4]))
         self.cursor.close()
         return resultados
     
     def inserir_item(self, item):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
-            INSERT INTO Produtos (id, preco, nome, descricao, imagem)
-            VALUES(?,?,?,?,?);
-        """, (item.get_id(), item.get_preco(), item.get_nome(), item.get_descricao(), item.get_imagem()))
+            INSERT INTO Produtos (nome, descricao, preco, imagem)
+            VALUES(?,?,?,?);
+        """, (item.get_nome(), item.get_descricao(), item.get_preco(), item.get_imagem()))
         self.conn.commit()
         self.cursor.close()
