@@ -1,8 +1,8 @@
 class Usuario():
-    def __init__(self, user_name, password, email):
+    def __init__(self, user_name, email, password):
         self._user_name = user_name
-        self._password = password
         self._email = email
+        self._password = password
         
     # Getters e Setters
     def get_user_name(self):
@@ -16,3 +16,6 @@ class Usuario():
     
     def check_password(self, password):
         return self._password == password
+    
+    def __str__(self):
+        return f'{self._user_name} - {self._email} - {self._password}'
