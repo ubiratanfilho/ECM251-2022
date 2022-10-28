@@ -1,11 +1,11 @@
 class Item():
     # Construtor
-    def __init__(self, nome, preco, descricao=None,imagem=None):
+    def __init__(self, nome, preco, descricao=None,imagem=None, id=None):
         self._nome = nome
         self._descricao = descricao
         self._preco = preco # _ indica que é privado
         self._imagem = imagem
-        self._id = None
+        self._id = id
     
     # Getters e Setters
     def get_nome(self):

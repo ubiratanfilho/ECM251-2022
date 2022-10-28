@@ -60,6 +60,19 @@ class ItemDAO:
             return False
         return True
     
+    def get_item_by_id(self, id):
+        self.cursor = self.conn.cursor()
+        self.cursor.execute("""
+            SELECT * FROM Produtos WHERE id = ?;
+        """, (id,))
+        resultado = self.cursor.fetchone()
+        self.cursor.close()
+        return Item(nome=resultado[1], 
+                    descricao=resultado[2], 
+                    preco=resultado[3], 
+                    imagem=resultado[4],
+                    id=resultado[0])    
+    
     def limpar_tabela(self):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
