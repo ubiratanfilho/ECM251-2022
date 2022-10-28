@@ -37,13 +37,14 @@ class ItemDAO:
             VALUES(?,?,?,?);
         """, (item.get_nome(), item.get_descricao(), item.get_preco(), item.get_imagem()))
         self.conn.commit()
+        item.set_id(self.cursor.lastrowid)
         self.cursor.close()
         
     def deletar_item(self, item):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
-            DELETE FROM Produtos WHERE nome = ?;
-        """, (item.get_nome(),))
+            DELETE FROM Produtos WHERE id = ?;
+        """, (item.get_id(),))
         self.conn.commit()
         self.cursor.close()
         
@@ -51,8 +52,8 @@ class ItemDAO:
         try:
             self.cursor = self.conn.cursor()
             self.cursor.execute(f"""
-                UPDATE Produtos SET nome = ?, descricao = ?, preco = ?, imagem = ? WHERE nome = ?;
-            """, (item.get_nome(), item.get_descricao(), item.get_preco(), item.get_imagem(), item.get_nome()))
+                UPDATE Produtos SET nome = ?, descricao = ?, preco = ?, imagem = ? WHERE id = ?;
+            """, (item.get_nome(), item.get_descricao(), item.get_preco(), item.get_imagem(), item.get_id()))
             self.conn.commit()
             self.cursor.close()
         except:
