@@ -35,10 +35,19 @@ class UsuarioController:
         try:
             return UsuarioDAO.get_instance().get_usuario(user_name)
         except:
-            raise Exception('Erro ao pegar usuário')
+            return None
     
     def limpar_tabela(self):
         try:
             UsuarioDAO.get_instance().limpar_tabela()
         except:
             raise Exception('Erro ao limpar tabela')
+        
+    def check_login(self, user_name, password):
+        try:
+            usuario = UsuarioDAO.get_instance().get_usuario(user_name)
+            if usuario == None:
+                return False
+            return usuario.check_password(password)
+        except:
+            raise Exception('Erro ao checar login')

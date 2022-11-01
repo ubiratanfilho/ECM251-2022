@@ -28,3 +28,6 @@ with col2:
 # Checa se usuário está logado
 if st.session_state.usuario == None:
     st.error("Você precisa estar logado para acessar essa página!")
+else:
+    st.markdown("## Produtos")
+    st.session_state.item_controller.get_all()

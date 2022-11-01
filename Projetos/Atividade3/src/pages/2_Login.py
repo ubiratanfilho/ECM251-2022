@@ -12,7 +12,10 @@ if st.session_state.usuario == None:
     senha = st.text_input("Senha", type="password")
     enter = st.button("Entrar")
     if enter:
-        usuario_controller = UsuarioController()
-        usuario_controller.check_login(usuario, senha)
+        if st.session_state.usuario_controller.check_login(usuario, senha):
+            st.session_state.usuario = st.session_state.usuario_controller.pegar_usuario(usuario)
+            st.success("Login realizado com sucesso!")
+        else:
+            st.error("Usuário ou senha incorretos!")
 else:
     st.write(f"Você está logado como **{st.session_state.usuario.get_user_name()}**")
