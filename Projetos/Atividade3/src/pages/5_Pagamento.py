@@ -33,4 +33,4 @@ if st.session_state.usuario != None:
         st.session_state.carrinho = []
         st.success("Compra finalizada com sucesso!")
 else:
-    st.markdown("### Você precisa estar logado para acessar essa página")
+    st.error("Você precisa estar logado para acessar essa página!")
