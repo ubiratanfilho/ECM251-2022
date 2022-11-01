@@ -18,30 +18,4 @@ with col1:
     st.markdown("### A única loja do seu ❤️💻")
 with col2:
     # caso o arquivo seja rodado dentro de src ou fora de src
-    try:
-        st.image("./src/imagens/Utec.png", width=200)
-    except FileNotFoundError:
-        st.image("./imagens/Utec.png", width=200)
-
-if st.session_state.usuario != None:
-    st.markdown("## Produtos") 
-
-    # Exibe os produtos
-    def exibe_produto(produto):
-        from PIL import Image
-        try:
-            img = Image.open(produto.get_imagem())
-        except FileNotFoundError:
-            img = Image.open("./src/" + produto.get_imagem()[2:])
-        st.image(img, width=200)
-        st.markdown(f"### {produto.get_nome()}")
-        st.markdown(f"{produto.get_descricao()}")
-        st.markdown(f"#### R${produto.get_preco()}")
-        button = st.button("Comprar 🛒", key=produto.get_nome())
-        if button:
-            st.session_state.carrinho.append(produto)
-
-    for produto in st.session_state.estoque:
-        exibe_produto(produto)
-else:
-    st.error("Você precisa estar logado para ver os produtos, vá até a tela de login e coloque seu usuário e senha")
+    st.image("https://dsm01pap009files.storage.live.com/y4maINQ8Xgz7FG0AUxeLQh4CpPFdB2g4_GYFvYG9neIhjBpQCQ6a9ldy86RSL14BqQ_rlCLTMm2X5ubVYXiWFirbJqxofB_9avqa2yE8BZpovEPpPCcSysf3_IDL5wgacBwDHCi2JcbGGJDzmqQblo5xASBEY-d2xZrKy7NBBt1qHgPEh0TeU95X6M1ZUFYkGnR?width=1000&height=1000&cropmode=none", width=200)
