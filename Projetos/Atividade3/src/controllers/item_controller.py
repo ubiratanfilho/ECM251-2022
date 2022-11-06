@@ -46,3 +46,9 @@ class ItemController:
             return True
         except:
             return False
+
+    def add_carrinho(self, id):
+        try:
+            return ItemDAO.get_instance().add_carrinho(id)
+        except:
+            return False

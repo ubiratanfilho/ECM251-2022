@@ -85,3 +85,12 @@ class ItemDAO:
         self.conn.commit()
         self.cursor.close()
     
+    def add_carrinho(self, id):
+        item = self.pegar_item(id)
+        self.cursor = self.conn.cursor()
+        self.cursor.execute("""
+            INSERT INTO Carrinho (nome, descricao, preco, imagem)
+            VALUES(?,?,?,?);
+        """, (item.get_nome(), item.get_descricao(), item.get_preco(), item.get_imagem()))
+        self.conn.commit()
+        self.cursor.close()
