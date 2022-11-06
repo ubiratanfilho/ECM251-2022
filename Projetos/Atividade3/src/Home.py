@@ -12,8 +12,9 @@ if 'usuario_controller' not in st.session_state:
     st.session_state.usuario_controller = UsuarioController()
 if 'item_controller' not in st.session_state:
     st.session_state.item_controller = ItemController()
+    st.session_state.item_controller.limpar_tabela('Carrinho')
 if 'usuario' not in st.session_state:
-    st.session_state.usuario = None  
+    st.session_state.usuario = None
 
 ### Página Inicial
 # Exibe o título da página inicial

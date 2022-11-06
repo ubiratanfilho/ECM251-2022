@@ -7,22 +7,22 @@ class ItemController:
     def __init__(self):
         pass
     
-    def get_all(self):
+    def get_all(self, table='Produtos'):
         try:
-            return ItemDAO.get_instance().get_all()
+            return ItemDAO.get_instance().get_all(table)
         except:
             return False
     
-    def inserir_item(self, item):
+    def inserir_item(self, item, table='Produtos'):
         try:
-            ItemDAO.get_instance().inserir_item(item)
+            ItemDAO.get_instance().inserir_item(item, table)
             return True
         except:
             return False
         
-    def deletar_item(self, item):
+    def deletar_item(self, item, table='Produtos'):
         try:
-            ItemDAO.get_instance().deletar_item(item)
+            ItemDAO.get_instance().deletar_item(item, table)
             return True
         except:
             return False
@@ -40,15 +40,9 @@ class ItemController:
         except:
             return False
         
-    def limpar_tabela(self):
+    def limpar_tabela(self, table='Produtos'):
         try:
-            ItemDAO.get_instance().limpar_tabela()
+            ItemDAO.get_instance().limpar_tabela(table)
             return True
-        except:
-            return False
-
-    def add_carrinho(self, id):
-        try:
-            return ItemDAO.get_instance().add_carrinho(id)
         except:
             return False

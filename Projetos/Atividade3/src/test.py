@@ -6,4 +6,5 @@ from controllers.usuario_controller import UsuarioController
 from models.usuario import Usuario
 from models.item import Item
 
-ItemController().limpar_tabela()
+produtos = ItemController().get_all()
+ItemController().inserir_item(produtos[0], 'Carrinho')
