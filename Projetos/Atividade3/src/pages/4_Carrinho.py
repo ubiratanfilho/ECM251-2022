@@ -8,7 +8,6 @@ st.title("Carrinho de Compras")
 if st.session_state.usuario == None:
     st.error("Você precisa estar logado para acessar essa página!")
 else:
-    st.markdown("## Produtos")
     produtos = st.session_state.item_controller.get_all('Carrinho')
     for produto in produtos:
         st.markdown(f"### {produto.get_nome()}")

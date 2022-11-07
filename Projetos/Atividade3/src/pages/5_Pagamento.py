@@ -3,34 +3,36 @@
 
 import streamlit as st
 
-def exibe_produto(produto):
-    from PIL import Image
-    img = Image.open(produto.get_imagem())
-    st.image(img, width=200)
-    st.markdown(f"### {produto.get_nome()}")
-    st.markdown(f"{produto.get_descricao()}")
-    st.markdown(f"#### R${produto.get_preco()}")
-    button = st.button("Remover 🛒", key=produto.get_nome())
-    if button:
-        st.session_state.carrinho.remove(produto)
-
 st.title("Pagamento")
 
-if st.session_state.usuario != None:
-    st.markdown(f"### Usuário: {st.session_state.usuario.get_user_name()}")
-    st.markdown(f"## Carrinho:")
-    # exibe os produtos
-    for item in st.session_state.carrinho:
-        exibe_produto(item)
-    
-    # calcula o valor total do carrinho
-    valor_total = sum([item.get_preco() for item in st.session_state.carrinho])
-    st.markdown(f"### Valor total: R${valor_total:.2f}")
-    
-    forma_pagamento = st.radio("Forma de pagamento", ["Cartão de crédito", "Boleto", "Pix"])
-    finalizar = st.button("Finalizar compra")
-    if finalizar:
-        st.session_state.carrinho = []
-        st.success("Compra finalizada com sucesso!")
-else:
+if st.session_state.usuario == None:
     st.error("Você precisa estar logado para acessar essa página!")
+else:
+    st.markdown("## Carrinho")
+    produtos = st.session_state.item_controller.get_all('Carrinho')
+    if len(produtos) == 0:
+        st.error("Você não tem nenhum produto no carrinho!")
+    else:
+        for produto in produtos:
+            st.markdown(f"### {produto.get_nome()}")
+            st.image(produto.get_imagem(), width=200)
+            st.markdown(f"{produto.get_descricao()}")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.markdown(f"#### R${produto.get_preco()}")
+            with col2:
+                button_car = st.button("Remover do carrinho", key=produto.get_id())
+                if button_car:
+                    st.session_state.item_controller.deletar_item(produto, 'Carrinho')
+        st.markdown("## Forma de Pagamento")
+        forma_pagamento = st.radio("Selecione a forma de pagamento", ("Cartão de Crédito", "Cartão de Débito", "Boleto"))
+
+        # valor total
+        total = 0
+        for produto in produtos:
+            total += produto.get_preco()
+        st.markdown(f"### Total: R${total:.2f}")
+        compra = st.button("Finalizar Compra")
+        if compra:
+            st.session_state.item_controller.limpar_tabela('Carrinho')
+            st.success("Compra realizada com sucesso!")
