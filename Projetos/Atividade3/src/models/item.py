@@ -1,6 +1,6 @@
 class Item():
     # Construtor
-    def __init__(self, nome, preco, descricao=None,imagem=None, id=None):
+    def __init__(self, nome, descricao, preco,imagem=None, id=None):
         self._nome = nome
         self._descricao = descricao
         self._preco = preco # _ indica que é privado

@@ -31,4 +31,13 @@ if st.session_state.usuario == None:
     st.error("Você precisa estar logado para acessar essa página!")
 else:
     st.markdown("## Produtos")
-    st.session_state.item_controller.get_all()
+    produtos = st.session_state.item_controller.get_all()
+    for produto in produtos:
+        st.markdown(f"### {produto.get_nome()}")
+        st.image(produto.get_imagem(), width=200)
+        st.markdown(f"{produto.get_descricao()}")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown(f"#### R${produto.get_preco()}")
+        with col2:
+            button_car = st.button("Adicionar ao carrinho", key=produto.get_id())
