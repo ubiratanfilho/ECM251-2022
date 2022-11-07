@@ -41,3 +41,5 @@ else:
             st.markdown(f"#### R${produto.get_preco()}")
         with col2:
             button_car = st.button("Adicionar ao carrinho", key=produto.get_id())
+            if button_car:
+                st.session_state.item_controller.inserir_item(produto, 'Carrinho')

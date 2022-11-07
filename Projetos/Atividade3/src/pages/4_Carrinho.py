@@ -5,20 +5,19 @@ import streamlit as st
 
 st.title("Carrinho de Compras")
 
-if st.session_state.usuario != None:
-    def exibe_produto(produto):
-        from PIL import Image
-        img = Image.open(produto.get_imagem())
-        st.image(img, width=200)
-        st.markdown(f"### {produto.get_nome()}")
-        st.markdown(f"{produto.get_descricao()}")
-        st.markdown(f"#### R${produto.get_preco()}")
-        button = st.button("Remover 🛒", key=produto.get_nome())
-        if button:
-            st.session_state.carrinho.remove(produto)
-
-    # exibe os produtos
-    for item in st.session_state.carrinho:
-        exibe_produto(item)
-else:
+if st.session_state.usuario == None:
     st.error("Você precisa estar logado para acessar essa página!")
+else:
+    st.markdown("## Produtos")
+    produtos = st.session_state.item_controller.get_all('Carrinho')
+    for produto in produtos:
+        st.markdown(f"### {produto.get_nome()}")
+        st.image(produto.get_imagem(), width=200)
+        st.markdown(f"{produto.get_descricao()}")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown(f"#### R${produto.get_preco()}")
+        with col2:
+            button_car = st.button("Remover do carrinho", key=produto.get_id())
+            if button_car:
+                st.session_state.item_controller.deletar_item(produto, 'Carrinho')
