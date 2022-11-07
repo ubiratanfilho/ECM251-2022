@@ -1,3 +1,6 @@
+# Ubiratan da Motta Filho
+# R.A - 20.00928-3
+
 class Usuario():
     def __init__(self, user_name, email, password):
         self._user_name = user_name

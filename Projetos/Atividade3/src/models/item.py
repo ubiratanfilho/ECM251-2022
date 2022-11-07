@@ -1,3 +1,5 @@
+# Ubiratan da Motta Filho
+# R.A - 20.00928-3
 class Item():
     # Construtor
     def __init__(self, nome, descricao, preco,imagem=None, id=None):

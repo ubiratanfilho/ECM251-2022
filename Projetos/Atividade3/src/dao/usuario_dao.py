@@ -1,3 +1,6 @@
+# Ubiratan da Motta Filho
+# R.A - 20.00928-3
+
 from models.usuario import Usuario
 import sqlite3
 
